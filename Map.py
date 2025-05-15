@@ -53,6 +53,7 @@ class Map(object):
         self.oGameUI = GameUI()
         self.oCamera = Camera(self.mapSize[0] * 32, 14)
 
+        self.oPlayer = Player(128,351)
 
 
     def loadWorld_11(self):
@@ -105,8 +106,8 @@ class Map(object):
     def get_Camera(self):
         return self.oCamera
 
-
-   
+    def get_player(self):
+        return self.oPlayer
  
 
 #code to get position where player is currently standing on the gound
@@ -160,7 +161,7 @@ class Map(object):
             obj.render(core) #bricks
 
       
-
+        self.get_player().render(core)
      
 
 
