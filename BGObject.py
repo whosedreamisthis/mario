@@ -7,6 +7,6 @@ class BGObject(object):
         self.type = "BGObject"
         
     def render(self,core):
-       core.screen.blit(self.image,core.get_map().get_camera().apply(self))
+       core.screen.blit(self.image,core.get_map().get_Camera().apply(self))
        
         
