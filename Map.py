@@ -101,7 +101,12 @@ class Map(object):
 
       
 
-
+    def get_blocks_below(self, x, y):
+        #return two blocks where player is standing
+        return (
+            self.map[x][y + 1],
+            self.map[x+ 1][y + 1]
+        )
 
     def get_Camera(self):
         return self.oCamera
