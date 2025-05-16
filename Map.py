@@ -114,16 +114,20 @@ class Map(object):
     
    
    
-
+    def update_player(self,core):
+        self.get_player().update(core)
 
     def update(self, core):
 
         
         if not core.get_map().in_event:
-            pass
-
+             self.update_player(core)
         else:
             self.get_event().update(core)
+            
+        if not self.in_event:
+            self.get_Camera().update(core.get_map().get_player().rect)
+            
 
    
       
@@ -142,7 +146,22 @@ class Map(object):
                 obj.render(core)
 
 
-
+    def get_blocks_for_collision(self,x,y):
+        """
+        
+        """
+        return (
+            self.map[x][y-1],
+            self.map[x][y+1],
+            self.map[x][y],
+            self.map[x-1][y],
+            self.map[x-1][y+1],
+            self.map[x-1][y-1],
+            self.map[x+1][y],
+            self.map[x+2][y],
+            self.map[x+1][y+1],
+            self.map[x+1][y-1],
+        )
     def render(self, core):
         """
 
