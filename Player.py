@@ -83,16 +83,21 @@ class Player:
                 if self.fast_moving:
                     if self.x_vel > MAX_FASTMOVE_SPEED:
                         self.x_vel = MAX_FASTMOVE_SPEED
-                    else:
-                        if self.x_vel > MAX_MOVE_SPEED:
-                            self.x_vel = MAX_MOVE_SPEED
+                else:
+                    if self.x_vel > MAX_MOVE_SPEED:
+                        self.x_vel = MAX_MOVE_SPEED
             if self.x_vel < 0:
                 if self.fast_moving:
                     if (-self.x_vel) > MAX_FASTMOVE_SPEED:
                         self.x_vel = -MAX_FASTMOVE_SPEED
-                    else:
-                        if (-self.x_vel) > MAX_MOVE_SPEED:
-                            self.x_vel = -MAX_MOVE_SPEED
+                else:
+                    if (-self.x_vel) > MAX_MOVE_SPEED:
+                        self.x_vel = -MAX_MOVE_SPEED
+        
+            if 0 < self.x_vel < SPEED_DECREASE_RATE:
+                self.x_vel = 0
+            if 0 > self.x_vel > -SPEED_DECREASE_RATE:
+                self.x_vel  = 0
             
             blocks = core.get_map().get_blocks_for_collision(self.rect.x//32,self.rect.y//32)
             
